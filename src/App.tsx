@@ -20,15 +20,13 @@ function App(): JSX.Element {
                 <li> She is small</li>
                 <li> She can sometimes be nice</li>
             </ul>
-            <p>
-                <div>
-                    <Button onClick={() => console.log("Hello World!")}>
-                        Log Hello World
-                    </Button>
-                </div>
-                Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload.
-            </p>
+            <div>
+                <Button onClick={() => console.log("Hello World!")}>
+                    Log Hello World
+                </Button>
+            </div>
+            Edit <code>src/App.tsx</code> and save. This page will automatically
+            reload.
             <Container>
                 <Row>
                     <Col>
