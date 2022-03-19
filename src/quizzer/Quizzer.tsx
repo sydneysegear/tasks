@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Quiz } from "./quiz";
 import { QuizList } from "./QuizList";
 import quizdata from "./quizzes.json";
+import appSketch from "./assets/appSketch.png";
 
 export function Quizzer(): JSX.Element {
     const [quizzes, setQuizzes] = useState<Quiz[]>(quizdata);
@@ -37,6 +38,21 @@ export function Quizzer(): JSX.Element {
                 ></QuizList>
             </div>
             <span>Total Points: </span>
+            <div>
+                <ul>
+                    <li>Completed Components</li>
+                    <li>Application is sketched</li>
+                    <li>Quizzes are Visible (tested)</li>
+                    <li>Quizzes have Questions (tested)</li>
+                    <li>Short Answer and Multiple Choice (not tested)</li>
+                    <li>Check Correctness (not tested)</li>
+                    <li>
+                        Edit Questions (about halfway done component, not
+                        tested)
+                    </li>
+                </ul>
+                <img src={appSketch} alt="A sketch of my quizzer app" />
+            </div>
         </div>
     );
 }
