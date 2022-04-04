@@ -91,13 +91,16 @@ export function QuizEditor({
                     >
                         Save
                     </Button>
-                    <Button
-                        onClick={() => deleteQuiz(quiz.id)}
-                        variant="danger"
-                        className="me-8"
-                    >
-                        Delete
-                    </Button>
+                    <div data-testid="Delete-Quiz">
+                        <Button
+                            onClick={() => deleteQuiz(quiz.id)}
+                            variant="danger"
+                            className="me-8"
+                            type="button"
+                        >
+                            Delete Quiz
+                        </Button>
+                    </div>
                 </Col>
             </Row>
         </Container>

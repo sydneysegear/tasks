@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { Quizzer } from "./Quizzer";
 import quizzes from "./quizzes.json";
+import userEvent from "@testing-library/user-event";
 //import userEvent from "@testing-library/user-event";
 
 describe("Quizzer Tests", () => {
@@ -61,6 +62,59 @@ describe("Quizzer Tests", () => {
             screen.queryByText(quizzes[1].questions[3].body)
         ).toBeInTheDocument();
     });
+
+    test("The Delete Quiz Button Deletes Quiz", () => {
+        const editQuiz = screen.getAllByRole("button", { name: /Edit/ });
+        userEvent.click(editQuiz[0]);
+        userEvent.click(editQuiz[1]);
+        userEvent.click(editQuiz[2]);
+        userEvent.click(editQuiz[3]);
+        const showButton = screen.getAllByText("Delete Quiz");
+        showButton[0].click();
+        expect(screen.queryAllByText(quizzes[0].title)).toHaveLength(0);
+        showButton[1].click();
+        expect(screen.queryAllByText(quizzes[1].title)).toHaveLength(0);
+        showButton[2].click();
+        expect(screen.queryAllByText(quizzes[2].title)).toHaveLength(0);
+        showButton[3].click();
+        expect(screen.queryAllByText(quizzes[3].title)).toHaveLength(0);
+    });
+
+    test("The Delete Question Button Deletes Question", () => {
+        const editQuiz = screen.getAllByRole("button", { name: /Edit/ });
+        userEvent.click(editQuiz[0]);
+        userEvent.click(editQuiz[1]);
+        userEvent.click(editQuiz[2]);
+        userEvent.click(editQuiz[3]);
+        const showButton = screen.getAllByText("Delete Question");
+        showButton[1].click();
+        expect(
+            screen.queryAllByText(quizzes[1].questions[0].name)
+        ).toHaveLength(0);
+        expect(
+            screen.queryAllByText(quizzes[1].questions[0].body)
+        ).toHaveLength(0);
+        expect(
+            screen.queryAllByText(quizzes[1].questions[1].name)
+        ).toHaveLength(0);
+        expect(
+            screen.queryAllByText(quizzes[1].questions[1].body)
+        ).toHaveLength(0);
+        showButton[2].click();
+        expect(
+            screen.queryAllByText(quizzes[2].questions[0].name)
+        ).toHaveLength(0);
+        expect(
+            screen.queryAllByText(quizzes[2].questions[0].body)
+        ).toHaveLength(0);
+        expect(
+            screen.queryAllByText(quizzes[2].questions[1].name)
+        ).toHaveLength(0);
+        expect(
+            screen.queryAllByText(quizzes[2].questions[1].body)
+        ).toHaveLength(0);
+    });
+
     /*
     test("Entering the right answer makes it correct.", () => {
         const showButton = screen.getAllByRole("button", {

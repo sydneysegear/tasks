@@ -48,7 +48,7 @@ export function QuizView({
                     showQuestions();
                 }}
             >
-                Open/Close Questions
+                OpenClose Questions
             </Button>
             {visible && (
                 <QuestionList
