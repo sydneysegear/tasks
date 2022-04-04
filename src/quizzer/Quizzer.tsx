@@ -49,7 +49,7 @@ export function Quizzer(): JSX.Element {
                     className="m-4"
                     onClick={handleShowAddModal}
                 >
-                    Add New Movie
+                    Add New Quiz
                 </Button>
                 <AddQuizModal
                     show={showAddModal}
