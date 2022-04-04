@@ -3,9 +3,12 @@ import { Quiz } from "./quiz";
 import { QuizList } from "./QuizList";
 import quizdata from "./quizzes.json";
 import appSketch from "./assets/appSketch.png";
+import { Button } from "react-bootstrap";
+import { AddQuizModal } from "./AddQuizModal";
 
 export function Quizzer(): JSX.Element {
     const [quizzes, setQuizzes] = useState<Quiz[]>(quizdata);
+    const [showAddModal, setShowAddModal] = useState<boolean>(false);
 
     function editQuiz(id: number, newQuiz: Quiz) {
         setQuizzes(
@@ -18,14 +21,17 @@ export function Quizzer(): JSX.Element {
         setQuizzes(quizzes.filter((quiz: Quiz): boolean => quiz.id !== id));
     }
 
-    /*
     function addQuiz(newQuiz: Quiz) {
-        const existing = quizzes.find((quiz: Quiz) => quiz.id === newQuiz.id);
+        const existing = quizzes.find(
+            (quiz: Quiz): boolean => quiz.id === newQuiz.id
+        );
         if (existing === undefined) {
             setQuizzes([...quizzes, newQuiz]);
         }
     }
-    */
+
+    const handleCloseAddModal = () => setShowAddModal(false);
+    const handleShowAddModal = () => setShowAddModal(true);
 
     return (
         <div>
@@ -37,7 +43,20 @@ export function Quizzer(): JSX.Element {
                     deleteQuiz={deleteQuiz}
                 ></QuizList>
             </div>
-            <span>Total Points: </span>
+            <div>
+                <Button
+                    variant="success"
+                    className="m-4"
+                    onClick={handleShowAddModal}
+                >
+                    Add New Movie
+                </Button>
+                <AddQuizModal
+                    show={showAddModal}
+                    handleClose={handleCloseAddModal}
+                    addQuiz={addQuiz}
+                ></AddQuizModal>
+            </div>
             <div>
                 <ul>
                     <li>Completed Components</li>
