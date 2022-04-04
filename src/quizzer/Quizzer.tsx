@@ -63,12 +63,14 @@ export function Quizzer(): JSX.Element {
                     <li>Application is sketched</li>
                     <li>Quizzes are Visible (tested)</li>
                     <li>Quizzes have Questions (tested)</li>
+                    <li>Delete Questions (tested)</li>
+                    <li>Delete Quizzes (tested)</li>
+                    <li>Add Quizzes (not tested)</li>
+                    <li>Add Questions (not tested)</li>
+                    <li>Published Questions (not tested)</li>
                     <li>Short Answer and Multiple Choice (not tested)</li>
                     <li>Check Correctness (not tested)</li>
-                    <li>
-                        Edit Questions (about halfway done component, not
-                        tested)
-                    </li>
+                    <li>Edit Questions (not tested)</li>
                 </ul>
                 <img src={appSketch} alt="A sketch of my quizzer app" />
             </div>
