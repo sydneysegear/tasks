@@ -28,7 +28,8 @@ export function QuizEditor({
             ...quiz,
             title: title,
             description: description,
-            questionCount: parseInt(numQuestions)
+            questionCount: parseInt(numQuestions),
+            questions: questionList
         });
         changeEditing();
     }

@@ -21,6 +21,7 @@ export function QuizView({
     function changeEditing() {
         setEditing(!editing);
     }
+    const [points, setPoints] = useState<number>(0);
     return editing ? (
         <QuizEditor
             changeEditing={changeEditing}
@@ -40,18 +41,23 @@ export function QuizView({
                 <p>{quiz.description}</p>
             </Row>
             <Row>
-                <p>Number of Questions: {quiz.questionCount}</p>
+                <p>Number of Questions: {quiz.questions.length}</p>
             </Row>
             <Button
                 onClick={() => {
                     showQuestions();
                 }}
             >
-                OpenClose Questions
+                Open/Close Questions
             </Button>
             {visible && (
-                <QuestionList questions={quiz.questions}></QuestionList>
+                <QuestionList
+                    questions={quiz.questions}
+                    points={points}
+                    setPoints={setPoints}
+                ></QuestionList>
             )}
+            <div>Points: {points}</div>
         </Container>
     );
 }

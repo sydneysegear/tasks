@@ -3,13 +3,20 @@ import { Form } from "react-bootstrap";
 import { Question } from "./question";
 
 export function MultChoiceList({
-    question
+    question,
+    points,
+    setPoints
 }: {
     question: Question;
+    points: number;
+    setPoints: (newPoints: number) => void;
 }): JSX.Element {
     const [option, setOption] = useState<string>(question.options[0]);
     function updateOption(event: React.ChangeEvent<HTMLSelectElement>) {
         setOption(event.target.value);
+    }
+    function addPoints(): void {
+        setPoints(points + question.points);
     }
     return (
         <div>
@@ -25,6 +32,7 @@ export function MultChoiceList({
             <div>
                 {option === question.expected ? (
                     <div>
+                        {addPoints}
                         <span>✔️</span>
                     </div>
                 ) : (

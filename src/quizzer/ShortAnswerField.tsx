@@ -6,13 +6,20 @@ type ChangeEvent = React.ChangeEvent<
 >;
 
 export function ShortAnswerField({
-    question
+    question,
+    points,
+    setPoints
 }: {
     question: Question;
+    points: number;
+    setPoints: (newPoints: number) => void;
 }): JSX.Element {
     const [answer, setAnswer] = useState<string>("");
     function updateAnswer(event: ChangeEvent) {
         setAnswer(event.target.value);
+    }
+    function addPoints(): void {
+        setPoints(points + question.points);
     }
     return (
         <div>
@@ -26,8 +33,8 @@ export function ShortAnswerField({
             <div>
                 {answer === question.expected ? (
                     <div>
+                        {addPoints}
                         <span>✔️</span>
-                        <span>total points</span>
                     </div>
                 ) : (
                     <span>❌</span>

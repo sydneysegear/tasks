@@ -5,9 +5,13 @@ import { Question } from "./question";
 import { ShortAnswerField } from "./ShortAnswerField";
 
 export function QuestionView({
-    question
+    question,
+    points,
+    setPoints
 }: {
     question: Question;
+    points: number;
+    setPoints: (newPoints: number) => void;
 }): JSX.Element {
     return (
         <Container>
@@ -19,10 +23,18 @@ export function QuestionView({
             </Row>
             <Row> Number of Points: {question.points}</Row>
             {question.type === "multiple_choice_question" && (
-                <MultChoiceList question={question}></MultChoiceList>
+                <MultChoiceList
+                    question={question}
+                    points={points}
+                    setPoints={setPoints}
+                ></MultChoiceList>
             )}
             {question.type === "short_answer_question" && (
-                <ShortAnswerField question={question}></ShortAnswerField>
+                <ShortAnswerField
+                    question={question}
+                    points={points}
+                    setPoints={setPoints}
+                ></ShortAnswerField>
             )}
         </Container>
     );
